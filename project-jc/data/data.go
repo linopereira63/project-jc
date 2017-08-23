@@ -52,8 +52,8 @@ func (d *Data)ComputeHash(k int, s string) {
   time.Sleep(5 * time.Second)
 
   h := sha512.New()
-	h.Write([]byte(s))
-	val := base64.StdEncoding.EncodeToString(h.Sum(nil))
+  h.Write([]byte(s))
+  val := base64.StdEncoding.EncodeToString(h.Sum(nil))
 
   mutex.Lock()
   d.hashMap[k] = val
