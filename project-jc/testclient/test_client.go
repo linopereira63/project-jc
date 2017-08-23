@@ -26,7 +26,7 @@ func main() {
 
   getUrl(stats_url)
 
-  for i := 0; i<1000; i++ {
+  for i := 0; i<1010; i++ {
     go postUrl(hash_url, data)
     time.Sleep(time.Millisecond)
   }
