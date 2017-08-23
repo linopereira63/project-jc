@@ -5,6 +5,7 @@ import (
   "time"
   "strings"
   "strconv"
+  "os"
   "io/ioutil"
   "net/http"
 )
@@ -54,12 +55,14 @@ func getUrl(url string) {
   resp, err := http.Get(url)
   if err != nil {
     fmt.Println("Error during Get:", err)
+    os.Exit(1)
   }
   defer resp.Body.Close()
 
   body, err := ioutil.ReadAll(resp.Body)
   if err != nil {
     fmt.Println("Error while reading body:", err)
+    return
   }
 
   fmt.Println(string(body))
@@ -80,7 +83,7 @@ func postUrl(url, s string) {
   resp, err := c.Do(req)
   if err != nil {
     fmt.Println("Error during http.Do:", err)
-    return
+    os.Exit(1)
   }
 
   defer resp.Body.Close()
@@ -88,6 +91,7 @@ func postUrl(url, s string) {
   body, err := ioutil.ReadAll(resp.Body)
   if err != nil {
     fmt.Println("Error while reading body:", err)
+    return
   }
 
   fmt.Println(string(body))

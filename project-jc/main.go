@@ -25,7 +25,7 @@ func (s *serverHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Creates a serverHandler, adds its enpoints and handlers, then creates
 // the server configured for port 8080 and returns it
-func startServer() *http.Server {
+func createServer() *http.Server {
 
   s := &serverHandler{mux: http.NewServeMux()}
 
@@ -42,8 +42,14 @@ func startServer() *http.Server {
 var d = data.NewData()
 var stop = make(chan os.Signal, 1)
 
+/*
+  Creates an http server, launches its ListenAndServe via a go routine, then
+  waits on the stop channel for a shutdown request or a cmd-line crtl-C
+  interrupt.
+*/
+
 func main() {
-  hs := startServer()
+  hs := createServer()
 
   go func() {
     log.Printf("Listening on http://0.0.0.0%s\n", hs.Addr)
@@ -85,5 +91,5 @@ func shutdown() http.Handler {
   return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
     // Trigger a graceful shutdown
     stop <- os.Interrupt
-})
+  })
 }

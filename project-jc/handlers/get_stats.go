@@ -26,8 +26,8 @@ func getStatsResponse(d *data.Data) []byte {
   resp := &StatsResponse{Total:t, Average:a}
   jResp, err := json.Marshal(resp)
   if err != nil {
-		log.Println("error in Marshal of StatsResponse:", err)
-	}
+    log.Println("error in Marshal of StatsResponse:", err)
+  }
   return jResp
 }
 

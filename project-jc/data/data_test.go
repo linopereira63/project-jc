@@ -87,4 +87,12 @@ func TestData(t *testing.T) {
       jobId, expectedHash, val, present)
   }
 
+  // Test Get for a non-existent jobId
+  jobId = 999999
+  val, present = d.Get(jobId)
+  if present {
+    t.Errorf("Expected hash for non-present jobId %d to not be present, present=%v",
+      jobId, present)
+  }
+
 }
