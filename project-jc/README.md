@@ -1,5 +1,4 @@
-
-The project-jc
+# project-jc
 
 - This project is written in Go using only the standard library.
 - When launched, it monitors port 8080 and waits for http connections.
