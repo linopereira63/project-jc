@@ -13,7 +13,7 @@
   * A GET to /hash/{jobId} returns the jobId's corresponding base64-encoded SHA512
     password hash.
       NOTE: If a valid jobId is specified before the SHA512 password hash has been computed, an "" is returned.
-            If no jobId is specified, then the error "missing job ID" is returned.
+            If no jobId is specified, then the error "missing job ID" is returned. 
             If an invalid jobId is specified, i.e. "xyz4", then the error "invalid job ID" is returned.
             If an unassigned jobId is specified, i.e. "6000000", then the error "job ID not found" is returned.
 
