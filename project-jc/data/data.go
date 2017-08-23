@@ -1,8 +1,8 @@
 package data
 
 import (
-	"crypto/sha512"
-	"encoding/base64"
+  "crypto/sha512"
+  "encoding/base64"
   "time"
   "sync"
 )
